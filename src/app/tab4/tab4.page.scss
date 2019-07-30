@@ -1,0 +1,156 @@
+  .orange-bg {
+    background: #FD5440;
+  }
+
+  .logo-card {
+    box-shadow: none;
+    padding-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+
+  .logo {
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+    font-weight: 700;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .arrow-icon {
+    color: white;
+    width: 25px;
+    height: 25px;
+  }
+
+  .arrow-btn {
+    --background: transparent;
+    --background-activated: transparent;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    --box-shadow: none;
+  }
+
+  .cart-btn {
+    --background: transparent;
+    --background-activated: transparent;
+    position: absolute;
+    top: 14px;
+    right: 0;
+    --box-shadow: none;
+  }
+
+  .quantity-number {
+    position: absolute;
+    top: 0px;
+    right: 14px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    --padding-top: 6px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .article-card {
+    box-shadow: none;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .article-name {
+    background: #FD5440;
+    padding: 20px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .article-content {
+    margin: 15px;
+    text-align: justify;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .article-price {
+    margin: 0;
+    padding: 0;
+    color: #fd5440;
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .btn-card {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .whole-btn {
+    background: #ffc93a;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    // height: 40px;
+  }
+
+  .less-col {
+    border-right: 1px solid #fd5440;
+    padding: 0;
+  }
+
+  .less-btn {
+    font-weight: 700;
+    // font-size: 20px;
+    color: #fd5440;
+    --color-activated: #ffc93a;
+    padding: 0;
+    --background: transparent;
+    --background-activated: #fd5440;
+    font-size: 15px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .quantity-number2 {
+    --background: transparent;
+    font-size: 15px;
+    color: #fd5440;
+    --padding-top: 13px;
+    --padding-start: 10px;
+    font-family: 'Mukta', sans-serif;
+    margin-left: 3px;
+  }
+
+  .right-col {
+    border-left: 1px solid #fd5440;
+    padding: 0;
+  }
+
+  .plus-btn {
+    font-weight: 700;
+    // font-size: 20px;
+    color: #fd5440;
+    --color-activated: #ffc93a;
+    padding: 0;
+    --background: transparent;
+    --background-activated: #fd5440;
+    font-size: 15px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .add-cart-btn {
+    --background: transparent;
+    --background-activated: transparent;
+    font-weight: 700;
+    color: #fd5440;
+    --color-activated: #fd5440;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-family: 'Mukta', sans-serif;
+  }

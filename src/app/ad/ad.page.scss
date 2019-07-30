@@ -1,0 +1,28 @@
+.ad {
+  // height: 100vh;
+  background: url('/assets/promo chu.jpg');
+  background-size: cover;
+}
+
+.ask-btn {
+  margin-top: 700px;
+  margin-left: 10px;
+  margin-right: 10px;
+  --background: #FFC93A;
+  --background-activated: #FFC93A;
+  --border-radius: 25px;
+  font-weight: 700;
+  font-size: 15px;
+  height: 50px;
+
+}
+
+.skip-btn {
+  margin-right: 130px;
+  margin-left: 130px;
+  font-weight: 700;
+  font-size: 15px;
+  --background: transparent;
+  --background-activated: transparent;
+  border-bottom: 1px solid white;
+}

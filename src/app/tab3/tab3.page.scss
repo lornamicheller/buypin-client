@@ -1,0 +1,160 @@
+.orange-bg {
+  background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tags {
+  --background: rgb(255, 255, 255);
+  --background-activated: rgb(255, 255, 255);
+  color: #FD5440;
+  --color-activated: #FD5440;
+  font-weight: 700;
+  font-size: 12px;
+  --border-radius: 25px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.logo {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-weight: 700;
+  font-family: 'Mukta', sans-serif;
+}
+
+.search-container {
+  background: transparent;
+}
+
+.search-card {
+  border-radius: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.search-input {
+  // border-bottom: 1px solid rgb(170, 170, 170);
+  --padding-start: 5px;
+  height: 60px;
+  background: rgba(194, 194, 194, 0.062);
+  font-family: 'Mukta', sans-serif;
+}
+
+.arrow-icon {
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  --box-shadow: none;
+
+}
+
+.cart-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  --box-shadow: none;
+}
+
+.quantity-number {
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  --padding-top: 6px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.first-card {
+  height: auto;
+  // box-shadow: 4px 4px 6px rgb(44, 44, 44);
+  // border-left: 1px solid rgb(206, 206, 206);
+  // border-right: 1px solid rgb(206, 206, 206);
+  // border-top: 1px solid rgb(206, 206, 206);
+  margin-top: 0;
+  box-shadow: none;
+}
+
+.item-name {
+  font-size: 10px;
+  margin-left: 20px;
+  font-weight: 700;
+  color: #FD5440;
+  font-family: 'Mukta', sans-serif;
+}
+
+.item-card {
+  height: auto;
+  box-shadow: 4px 4px 6px rgb(44, 44, 44);
+  border-left: 1px solid rgb(206, 206, 206);
+  border-right: 1px solid rgb(206, 206, 206);
+  border-top: 1px solid rgb(206, 206, 206);
+  border-radius: 0;
+  margin: 0;
+}
+
+.title-store {
+  background: #FFC93A;
+  color: #FD5440;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 15px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.btn-card {
+  height: auto;
+  width: 100%;
+  --background: transparent;
+  --background-activated: transparent;
+  --box-shadow: none;
+}
+
+.add-btn {
+  --background: #FD5440;
+  --background-activated: #FFC93A;
+  font-size: 12px;
+  font-weight: 700;
+  --border-radius: 25px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.prices {
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.scroll-tags {
+  padding-top: 20px;
+  display: flex;
+  overflow-x: scroll;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.icon {
+  font-size: 25px;
+  margin-top: 20px;
+  margin-left: 10px;
+}

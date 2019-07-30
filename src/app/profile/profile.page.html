@@ -1,0 +1,111 @@
+<ion-content class="bg-orange">
+  <h2 style="color: white; font-weight: 700; font-size: 30px; margin-left: 30px; margin-top: 70px; font-family: 'Mukta', sans-serif;">¡Hola!</h2>
+
+  <ion-button (click)="logOut()" style="--box-shadow: none;" expand="block" class="logout-btn">
+      <img src="assets/logout.png" width="35px" height="35px">
+  </ion-button>
+
+  <ion-card style="box-shadow: none; margin:  0;">
+          <ion-avatar ion-button (click)="presentAlertConfirm()" class="circle-avatar">
+              <img *ngIf="savedPhoto == null" class="circle- img" src="assets/camarabuypin.png">
+              <img *ngIf="savedPhoto != null" class="circle-img" src="{{savedPhoto.url()}}">
+          </ion-avatar>
+      <h6 style="text-align: center; font-weight: 300; color: white; font-size: 15px; font-family: 'Mukta', sans-serif;">Profile Photo</h6>
+  </ion-card>
+
+  <ion-button (click)="openOrderHistory()" style="--box-shadow: none;" expand="full" class="first-btn">
+      <ion-card class="order-history">
+          <ion-grid style="margin: 0; padding: 0;">
+              <ion-row>
+                  <ion-col size="2">
+                      <img class="icon" src="assets/orderhistory.png">
+                  </ion-col>
+                  <ion-col size="8" class="order-title">
+                      Historial de ordenes
+                  </ion-col>
+                  <ion-col size="2">
+                      <ion-icon class="arrow-btn" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-card>
+  </ion-button>
+
+  <!-- <ion-button style="--box-shadow: none;" expand="full" class="second-btn">
+  <ion-card class="order-history">
+    <ion-grid style="margin: 0; padding: 0;">
+      <ion-row>
+        <ion-col size="2">
+          <img class="icon" src="assets/shipinaddress.png">
+        </ion-col>
+        <ion-col size="8" class="order-title">
+          Dirección
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon class="arrow-btn" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-button> -->
+
+  <ion-button (click)="openPayment()" style="--box-shadow: none;" expand="full" class="second-btn">
+      <ion-card class="order-history">
+          <ion-grid style="margin: 0; padding: 0;">
+              <ion-row>
+                  <ion-col size="2">
+                      <img class="icon" src="assets/paytment.png">
+                  </ion-col>
+                  <ion-col size="8" class="order-title">
+                      Método de pago
+                  </ion-col>
+                  <ion-col size="2">
+                      <ion-icon class="arrow-btn" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-card>
+  </ion-button>
+
+  <ion-button style="--box-shadow: none;" expand="full" class="second-btn">
+      <ion-card class="order-history">
+          <ion-grid style="margin: 0; padding: 0;">
+              <ion-row>
+                  <ion-col size="2">
+                      <img class="icon" src="assets/terms&priva.png">
+                  </ion-col>
+                  <ion-col size="8" class="order-title">
+                      Terminos y Privacidad
+                  </ion-col>
+                  <ion-col size="2">
+                      <ion-icon class="arrow-btn" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-card>
+  </ion-button>
+
+  <ion-button (click)="openAccount()" style="--box-shadow: none;" expand="full" class="second-btn">
+      <ion-card class="order-history">
+          <ion-grid style="margin: 0; padding: 0;">
+              <ion-row>
+                  <ion-col size="2">
+                      <img class="icon" src="assets/accountsetting.png">
+                  </ion-col>
+                  <ion-col size="8" class="order-title">
+                      Cuenta
+                  </ion-col>
+                  <ion-col size="2">
+                      <ion-icon class="arrow-btn" ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-card>
+  </ion-button>
+
+  <!-- <ion-card style="box-shadow: none;">
+  <ion-button class="logout-btn" expand="block">LOGOUT</ion-button>
+</ion-card> -->
+
+  <!-- <p class="version-type">Version 11.5 (470)</p> -->
+</ion-content>

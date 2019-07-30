@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-card style="box-shadow: none;">
+    <ion-img class="pinicon" src="assets/brujula chack.png"></ion-img>
+  </ion-card>
+
+  <ion-card class="raiting-card">
+    <h1 class="header-style">Su pedido fue entregado</h1>
+    <p class="suggestion-text">Tu sugerencia nos ayudará a mejorar
+      nuestros servicios.</p>
+
+    <div class="center-stars">
+      <ion-buttons>
+        <ion-button [disabled]="readonly" fill="clear" [size]="size"
+          *ngFor="let current of [1, 2, 3, 4, 5]; let i = index" (mouseover)="hoverRate = i + 1"
+          (mouseleave)="hoverRate = 0">
+          <ion-icon slot="icon-only" name="star" [class.filled]="(i + 1 <= hoverRate || (!hoverRate && i + 1 <= rate))">
+          </ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <ion-card class="textarea-card">
+      <ion-textarea class="center-input" style="--padding-start: 10px;" [(ngModel)]='comentarios' class=input-text placeholder="Comentario">
+      </ion-textarea>
+    </ion-card>
+
+
+    <ion-button expand="block" class="submit">Enviar</ion-button>
+
+
+  </ion-card>
+</ion-content>

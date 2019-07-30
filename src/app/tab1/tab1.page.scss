@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap');
+
+.orange-bg {
+  background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+}
+
+.logo {
+  width: 100px;
+  height: 80px;
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  --box-shadow: none;
+}
+
+.quantity-number {
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  --padding-top: 6px;
+}
+
+.first-card {
+  height: auto;
+  box-shadow: 4px 4px 6px rgb(44, 44, 44);
+  border-left: 1px solid rgb(206, 206, 206);
+  border-right: 1px solid rgb(206, 206, 206);
+  border-top: 1px solid rgb(206, 206, 206);
+}
+
+.title-store {
+  background: #FFC93A;
+  color: #FD5440;
+  font-weight: 700;
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 15px;
+
+font-family: 'Mukta', sans-serif;
+}
+
+.btn-card {
+  height: auto;
+  width: 100%;
+  --background: transparent;
+  --background-activated: transparent;
+  --box-shadow: none;
+}

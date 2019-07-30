@@ -1,0 +1,104 @@
+<div class="orange-bg">
+  <ion-card class="logo-card">
+    <h5 class="logo">{{ storeName }}</h5>
+    <!-- <img class="logo" src="assets/logo prueba.png"> -->
+
+    <ion-button style="--box-shadow: none;"  (click)="goBack()" class="arrow-btn">
+      <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+    </ion-button>
+
+    <div class="cart-item">  
+      <ion-button style="--box-shadow: none;"  (click)="cartOpen()" class="cart-btn">
+        <img src="assets/cartera.png" width="30px" height="30px" style="object-fit: contain;">
+        <ion-badge *ngIf=" cartNumber != null" color="success" class="quantity-number">{{cartNumber}}</ion-badge>
+        <ion-badge *ngIf=" cartNumber == null" color="success" class="quantity-number">0</ion-badge>
+      </ion-button>
+    </div>
+
+    <div  class="scroll-tags">
+      <div *ngFor="let cat of categoryArray">
+      <ion-button (click)="filter(cat)" style="--box-shadow: none;" class="tags">{{cat}}</ion-button>
+      <!-- <ion-button (click)="filter('Alcochol')"  style="--box-shadow: none;" class="tags">Alcohol</ion-button>
+      <ion-button (click)="filter('Refrigerios')"  style="--box-shadow: none;" class="tags">Refrigerios</ion-button>
+      <ion-button (click)="filter('Mascotas')"  style="--box-shadow: none;" class="tags">Mascotas</ion-button>
+      <ion-button (click)="filter('Hogar')"  style="--box-shadow: none;" class="tags">Hogar</ion-button>
+      <ion-button (click)="filter('Desayuno')"  style="--box-shadow: none;" class="tags">Desayuno</ion-button>
+      <ion-button (click)="filter('Todos')"  style="--box-shadow: none;" class="tags">Todos</ion-button>
+      <ion-button  style="--box-shadow: none;" class="tags">Higiene</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Alcohol</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Refrigerios</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Mascotas</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Hogar</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Desayuno</ion-button>
+      <ion-button (click)="filter('Higiene')"  style="--box-shadow: none;" class="tags">Todos</ion-button> -->
+    </div>
+    </div>
+  </ion-card>
+</div>
+
+<div class="search-container">
+  <ion-card class="search-card">
+    <ion-grid style="padding: 0;">
+      <ion-row>
+        <ion-col style="padding: 0; background: rgba(194, 194, 194, 0.062);" size="1">
+          <ion-icon class="icon" ios="ios-search" md="md-search"></ion-icon>
+        </ion-col>
+        <ion-col style="padding: 0;">
+          <ion-input [(ngModel)]="searchTerm" (keyup)="getProduct()" clear-input class="search-input" type="text" placeholder="Buscar"></ion-input>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  </ion-card>
+</div>
+
+<ion-content class="bg"> 
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let item of product" size="6">
+          <ion-card class="item-card">
+            <h5 class="item-name">{{item.get('Name')}}</h5>
+            <ion-button style="--box-shadow: none;"  (click)="openPage(item)" expand="block" class="btn-card">
+              <img *ngIf = "item.get('picture')!=null" src="{{item.get('picture').url()}}" class="item"  width="200px" height="100px" style="object-fit: contain;">
+              <img *ngIf = "item.get('picture')==null"  class="item" src="assets/032731.jpg" width="200px" height="100px" style="object-fit: contain;">
+            </ion-button>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-button (click)="object(item)" style="--box-shadow: none;"  class="add-btn" expand="block">ADD</ion-button>
+                </ion-col>
+                <ion-col style="border-left: 1px solid rgb(189, 189, 189);" size="6">
+                  <p class="prices">${{item.get('Price')}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+
+</ion-content>
+
+<ion-tab-bar slot="bottom" style="padding-top: 10px; padding-bottom: 15px; --background: #FD5440;">
+    <ion-tab-button (click)="openHome()">
+      <img src="assets/home.png" width="30px" height="30px">
+      <!-- <ion-label>Tab One</ion-label> -->
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="search">
+      <img src="assets/search.png" width="30px" height="30px">
+      <ion-label>Tab Two</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="profile" (click)="openProfile()">
+      <img src="assets/profile.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+
+    <ion-tab-button (click)="openOthers()">
+      <img src="assets/other.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+  </ion-tab-bar>

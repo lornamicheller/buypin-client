@@ -1,0 +1,185 @@
+<div class="orange-bg">
+  <ion-card class="logo-card">
+    <h5 class="logo">{{ categoryName }}</h5>
+    <!-- <img class="logo" src="assets/logo prueba.png"> -->
+
+    <div class="cart-item">
+       
+            
+            <ion-icon ion-button class="btnBack" routerLink="/tab1" name="ios-arrow-back"></ion-icon>
+          
+      <!-- <ion-button style="--box-shadow: none;"  (click)="cartOpen()" class="cart-btn">
+        <img src="assets/cartera.png" width="30px" height="30px" style="object-fit: contain;">
+        <ion-badge color="success" class="quantity-number">5</ion-badge>
+      </ion-button> -->
+    </div>
+  </ion-card>
+</div>
+
+<ion-content class="bg">
+
+  <p style="margin-top: 40px; text-align: center; color: white; font-family: 'Mukta', sans-serif;" *ngIf = "statusText == true"> No hay locales registrados. </p>
+
+  <ion-card class="card-store" *ngFor="let store of stores">
+    <div>
+      <img style="height: 160px; object-fit: cover;" *ngIf = "store.get('storePicture')==null"src="assets/store1.jpg">
+      <img style="height: 160px; object-fit: cover;" *ngIf = "store.get('storePicture')!=null" src="{{store.get('storePicture').url()}}">
+    </div>
+    <!-- <h4 class="title-store">{{store.get("Name")}}</h4> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <h4 class="title-store">{{store.get("Name")}}</h4>
+          <p  *ngIf="startHour(store.get('Schedule')) != null" class="time">Horario: <span style="font-weight: 300;">{{startHour(store.get("Schedule"))}}</span> - <span
+              style="font-weight: 300;">{{endHour(store.get("Schedule"))}}</span></p>
+
+              <p  *ngIf="startHour(store.get('Schedule')) == null" class="time">Horario: <span style="font-weight: 300;">No Disponible</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">{{ formatPhone(store.get("Phone")) }}</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button *ngIf="getDayWork(store.get('Schedule')) == true" style="--box-shadow: none;"  expand="block" color="success" (click)="openPage(store)" class="open">OPEN</ion-button>
+          <ion-button  *ngIf="getDayWork(store.get('Schedule')) != true" style="--box-shadow: none;"  expand="block" color="danger"  class="close" disabled="true">CLOSE</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">Colmado Melendez</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" color="danger" class="open">CLOSE</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">Colmado Class</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" (click)="openPage()" color="success" class="open">OPEN</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">Colmado Don Pepe</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" color="danger" class="open">CLOSE</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">24 Pa' Ti</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" (click)="openPage()" color="success" class="open">OPEN</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">Market Place</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" color="danger" class="open">CLOSE</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="card-store">
+    <div>
+      <img src="assets/store1.jpg">
+    </div>
+    <h4 class="title-store">Convenience Aguadilla</h4>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <p class="time">Horario: <span style="font-weight: 300;">6:00AM</span> - <span
+              style="font-weight: 300;">10:00PM</span></p>
+          <p class="phone">Teléfono: <span style="font-weight: 300;">787-888-8888</span></p>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button style="--box-shadow: none;"  expand="block" (click)="openPage()" color="success" class="open">OPEN</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card> -->
+
+</ion-content>
+
+<ion-tab-bar slot="bottom" style="padding-top: 10px; padding-bottom: 15px; --background: #FD5440;">
+    <ion-tab-button (click)="openHome()">
+      <img src="assets/home.png" width="30px" height="30px">
+      <!-- <ion-label>Tab One</ion-label> -->
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="search">
+      <img src="assets/search.png" width="30px" height="30px">
+      <ion-label>Tab Two</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="profile" (click)="openProfile()">
+      <img src="assets/profile.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+
+    <ion-tab-button (click)="openOthers()">
+      <img src="assets/other.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+  </ion-tab-bar>

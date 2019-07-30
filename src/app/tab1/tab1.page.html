@@ -1,0 +1,77 @@
+<div class="orange-bg">
+    <ion-card class="logo-card">
+        <img class="logo" src="assets/logo prueba.png">
+    </ion-card>
+</div>
+
+<ion-content>
+    <ion-card *ngFor="let item of storeCategory" href="/tab1" (click)="openPage(item)" ion-button class="first-card">
+        <img src="{{item.get('categoryImg').url()}}" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">{{ item.get("name") }}</p>
+    </ion-card>
+
+    <!-- <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/alcholl.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">{{ alcohol }}</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/clothing.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">{{ clothing }}</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/convenecesrote.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Convenience Store</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/farmacia.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Farmacia</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/ferretería.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Ferretería</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/foodtruck.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Foodtruck</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/panaderia.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Panaderia</p>
+    </ion-card>
+
+    <ion-card (click)="openPage()" ion-button class="first-card">
+        <img src="assets/restaurant.png" width="200px" height="200px" style="object-fit: contain;">
+        <p class="title-store">Restaurantes</p>
+    </ion-card> -->
+
+</ion-content>
+
+<ion-tab-bar slot="bottom" style="padding-top: 10px; padding-bottom: 15px; --background: #FD5440;">
+    <ion-tab-button (click)="openHome()">
+      <img src="assets/home.png" width="30px" height="30px">
+      <!-- <ion-label>Tab One</ion-label> -->
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="search">
+      <img src="assets/search.png" width="30px" height="30px">
+      <ion-label>Tab Two</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="profile" (click)="openProfile()">
+      <img src="assets/profile.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+
+    <ion-tab-button (click)="openOthers()">
+      <img src="assets/other.png" width="30px" height="30px">
+      <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+  </ion-tab-bar>

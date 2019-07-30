@@ -1,0 +1,7 @@
+{
+  "name": "buypin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

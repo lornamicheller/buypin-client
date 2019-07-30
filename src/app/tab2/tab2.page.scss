@@ -1,0 +1,98 @@
+.orange-bg {
+  background: #FD5440;
+}
+
+.bg {
+  --background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+}
+
+.btnBack{
+  color: white;
+position: absolute;
+top: 23px;
+left: 0px;
+font-size: 25px;
+--box-shadow:none;
+--background: none;
+}
+
+.logo {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-weight: 700;
+  font-family: 'Mukta', sans-serif;
+}
+
+.cart-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  --box-shadow: none;
+}
+
+.quantity-number {
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  --padding-top: 6px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.card-store {
+  box-shadow: none;
+  margin: 0;
+  border-radius: 0;
+  background: white;
+  margin-bottom: 20px;
+
+}
+
+.time {
+  font-weight: 700;
+  color: black;
+  font-family: 'Mukta', sans-serif;
+}
+
+.phone {
+  font-weight: 700;
+  color: black;
+  font-family: 'Mukta', sans-serif;
+}
+
+.open {
+  --border-radius: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 17px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.close
+{
+  --border-radius: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 17px;
+  font-family: 'Mukta', sans-serif;
+  --background: red;
+}
+
+.title-store {
+  font-family: 'Mukta', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Mukta', sans-serif;
+  color: black;
+}
+

@@ -1,0 +1,167 @@
+<div class="orange-bg">
+  <ion-card class="logo-card">
+    <h5 class="logo">Cart</h5>
+    <!-- <img class="logo" src="assets/logo prueba.png"> -->
+
+    <div class="cart-item">
+      <ion-button style="--box-shadow: none;" (click)="cartOpen()" class="cart-btn">
+        <img src="assets/cartera.png" width="30px" height="30px" style="object-fit: contain;">
+        <ion-badge *ngIf= "cartNumber != null " color="success" class="quantity-number">{{cartNumber}}</ion-badge>
+        <ion-badge *ngIf="cartNumber == null " color="success" class="quantity-number">0</ion-badge>
+      </ion-button>
+    </div>
+  </ion-card>
+</div>
+
+<ion-content>
+  <ion-card *ngFor="let product of products" style="box-shadow: none; margin: 0; border-bottom: 1px solid grey; border-radius: 0;">
+    <ion-icon  ion-button  class="delete-icon" ios="ios-close" (click)="deleteElement(product)" md="md-close"></ion-icon>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <img src="{{product.prodImage}}" width="300px" height="200px" style="object-fit: contain;">
+        </ion-col>
+        <ion-col size="8">
+          <p class="article-title">{{product.prodName}}</p>
+          <p class="article-content">{{product.description}}</p>
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col size="5">
+                <p class="price-title">${{product.prodPrice}}</p>
+              </ion-col>
+              <ion-col class="whole-btn" size="7">
+                <ion-grid style="padding: 0;">
+                  <ion-row>
+                    <ion-col class="less-col" size="4">
+                      <ion-button (click)="decrementValue(product)"  style="--box-shadow: none;" class="less-btn"> - </ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-badge class="quantity-number2">{{product.quantityNumber}}</ion-badge>
+                    </ion-col>
+                    <ion-col class="right-col" size="4">
+                      <ion-button (click)="incrementValue(product)" style="--box-shadow: none;" class="less-btn"> + </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <!-- <ion-card style="box-shadow: none; margin: 0; border-bottom: 1px solid grey; border-radius: 0;">
+    <ion-icon class="delete-icon" ion-button ios="ios-close" md="md-close"></ion-icon>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <img src="assets/doritos.jpg" width="300px" height="200px" style="object-fit: contain;">
+        </ion-col>
+        <ion-col size="8">
+          <p class="article-title">Doritos</p>
+          <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col size="5">
+                <p class="price-title">$1.99</p>
+              </ion-col>
+              <ion-col class="whole-btn" size="7">
+                <ion-grid style="padding: 0;">
+                  <ion-row>
+                    <ion-col class="less-col" size="4">
+                      <ion-button class="less-btn"> - </ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-badge class="quantity-number2">1</ion-badge>
+                    </ion-col>
+                    <ion-col class="right-col" size="4">
+                      <ion-button class="less-btn"> + </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card> -->
+
+  <!-- <ion-card style="box-shadow: none; margin: 0; border-bottom: 1px solid grey; border-radius: 0;">
+    <ion-icon class="delete-icon" ion-button ios="ios-close" md="md-close"></ion-icon>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <img src="assets/montes.jpg" width="300px" height="200px" style="object-fit: contain;">
+        </ion-col>
+        <ion-col size="8">
+          <p class="article-title">Vino Montes</p>
+          <p class="article-content">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col size="5">
+                <p class="price-title">$1.99</p>
+              </ion-col>
+              <ion-col class="whole-btn" size="7">
+                <ion-grid style="padding: 0;">
+                  <ion-row>
+                    <ion-col class="less-col" size="4">
+                      <ion-button style="--box-shadow: none;" class="less-btn"> - </ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-badge class="quantity-number2">1</ion-badge>
+                    </ion-col>
+                    <ion-col class="right-col" size="4">
+                      <ion-button style="--box-shadow: none;" class="less-btn"> + </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card> -->
+
+  <ion-card class="total-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <p>Starting Subtotal</p>
+          <p>Extra Savings</p>
+          <p>Subtotal</p>
+          <p>Delivery Fee</p>
+          <p>Taxes</p>
+          <p style="font-weight: 700; color: #fd5440;">Order Total</p>
+        </ion-col>
+
+        <ion-col size="6">
+          <p style="text-align: right">{{ startingSubtotal }}</p>
+          <p style="text-align: right">{{ extraSavings }}</p>
+          <p style="text-align: right">$0.00</p>
+          <p style="text-align: right">$0.00</p>
+          <p style="text-align: right">$0.00</p>
+          <p style="text-align: right; font-weight: 700; color: #fd5440;">$0.00</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card class="total-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <p>Order total</p>
+          <p style="text-align: left; font-weight: 700; color: #fd5440;">$25.99</p>
+        </ion-col>
+
+        <ion-col size="8">
+          <ion-button style="--box-shadow: none;" (click)="openPage()" class="checkout-btn" expand="block">PROCEED TO
+            CHECKOUT</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,46 @@
+.logo {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Mukta', sans-serif;
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 25x;
+}
+
+.logo-card {
+  box-shadow: none;
+  margin: 0;
+  border-radius: 0;
+  --background: #FD5440;
+  width: 100%;
+}
+
+.icon-btn {
+  color: rgb(255, 255, 255);
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+}
+
+.input {
+  margin-top: 10px;
+  font-family: 'Mukta', sans-serif;
+--placeholder-color: grey;
+}
+
+.save-btn {
+  --background: #FD5440;
+  --background-activated: #FD5440;
+  color: #FFC93A;
+  --color-activated: #FFC93A;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-weight: 700;
+  font-size: 13px;
+  height: 50px;
+  --border-radius: 25px;
+  margin-top: 40px;
+}

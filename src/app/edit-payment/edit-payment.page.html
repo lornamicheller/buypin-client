@@ -1,0 +1,31 @@
+<div class="orange-bg">
+    <ion-card class="logo-card">
+      <h5 class="logo">Editar método de pago</h5>
+      <!-- <img class="logo" src="assets/logo prueba.png"> -->
+  
+      <ion-button style="--box-shadow: none;"  (click)="goBack()" class="arrow-btn">
+        <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </div>
+  
+  <ion-content>
+    <ion-card class="payment-card">
+      <img src="assets/visas.png" width="200px" height="200px" style="object-fit: contain;">
+    </ion-card>
+  
+    <ion-card class="input-card">
+      <ion-input [(ngModel)]="name" type="text" style="margin-top: 10px;" class="card" clearInput placeholder="Jane Doe"></ion-input>
+      <ion-input [(ngModel)]="number" type="text" class="card" clearInput placeholder="4242 4242 4242 4242"></ion-input>
+      <ion-input [(ngModel)]="expDate" type="text" class="card" clearInput placeholder="Expiration Year"></ion-input>
+      <ion-input [(ngModel)]="expMont" type="text" class="card" clearInput placeholder="Expiration Month"></ion-input>
+      <!-- <ion-datetime  placeholder="MMMM/YY" displayFormat="MMMM, YYYY" max="2035"></ion-datetime> -->
+
+      <!-- <ion-input type="text" class="card" clearInput placeholder="MM/YYYY"></ion-input> -->
+      <ion-input [(ngModel)]="cvv" type="text" class="card" clearInput placeholder="Security Code"></ion-input>
+  
+      <ion-button style="--box-shadow: none;"  class="next-btn" (click)="createUser()" expand="block">GUARDAR</ion-button>
+  
+    </ion-card>
+  
+  </ion-content>

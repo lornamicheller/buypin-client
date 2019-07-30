@@ -1,0 +1,104 @@
+.orange-bg {
+  background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tags {
+  --background: rgb(255, 255, 255);
+  --background-activated: rgb(255, 255, 255);
+  color: #FD5440;
+  --color-activated: #FD5440;
+  font-weight: 700;
+  font-size: 12px;
+  --border-radius: 25px;
+}
+
+.logo {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+.arrow-icon {
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  --box-shadow: none;
+}
+
+.arrow-icon {
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  --box-shadow: none;
+}
+
+.name {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #FD5440;
+  --padding-start: 5px;
+  --placeholder-opacity: 10;
+  --color: rgb(160, 160, 160);
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.name2 {
+  border: 1px solid #FD5440;
+  --padding-start: 5px;
+  --placeholder-opacity: 10;
+  --color: rgb(160, 160, 160);
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.name3 {
+  border: 1px solid #FD5440;
+  --padding-start: 5px;
+  --placeholder-opacity: 10;
+  --color: rgb(112, 112, 112);
+  font-weight: 700;
+  font-size: 12px;
+  height: 37px;
+}
+
+.create-btn {
+  --background: #FD5440;
+  --background-activated: #FD5440;
+  --color-activated: #FFC93A;
+  --border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+  height: 50px;
+  --box-shadow: none;
+  color: #FFC93A;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+}

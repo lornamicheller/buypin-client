@@ -1,0 +1,156 @@
+.orange-bg {
+  background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tags {
+  --background: rgb(255, 255, 255);
+  --background-activated: rgb(255, 255, 255);
+  color: #FD5440;
+  --color-activated: #FD5440;
+  font-weight: 700;
+  font-size: 12px;
+  --border-radius: 25px;
+}
+
+.logo {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-weight: 700;
+  font-family: 'Mukta', sans-serif;
+}
+
+.arrow-icon {
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  --box-shadow: none;
+}
+
+.cart-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  --box-shadow: none;
+}
+
+.quantity-number {
+  position: absolute;
+  top: 0px;
+  right: 14px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  --padding-top: 6px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.article-title {
+  font-weight: 300;
+  font-family: 'Mukta', sans-serif;
+}
+
+.article-content {
+  font-weight: 300;
+  font-family: 'Mukta', sans-serif;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fd5440;
+  width: 25px;
+  height: 25px;
+  z-index: 1000;
+}
+
+.price-title {
+  margin: 0;
+  padding: 0;
+  color: #fd5440;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  padding: 0;
+  text-align: left;
+  margin-top: 10px;
+  font-family: 'Mukta', sans-serif;
+}
+
+.whole-btn {
+  background: #ffc93a;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  // height: 40px;
+}
+
+.less-col {
+  border-right: 1px solid #fd5440;
+  padding: 0;
+}
+
+.less-btn {
+  font-weight: 700;
+  // font-size: 20px;
+  color: #fd5440;
+  --color-activated: #fd5440;
+  padding: 0;
+  --background: transparent;
+  --background-activated: transparent;
+  font-size: 15px;
+}
+
+.quantity-number2 {
+  --background: transparent;
+  font-size: 15px;
+  color: #fd5440;
+  --padding-top: 13px;
+  --padding-start: 10px;
+  font-family: 'Mukta', sans-serif;
+  margin-left: 3px;
+}
+
+.right-col {
+  border-left: 1px solid #fd5440;
+  padding: 0;
+}
+
+.total-card {
+  box-shadow: none; 
+  margin: 0; 
+  border-bottom: 1px solid grey; 
+  border-radius: 0;
+  border-bottom: 1px solid grey;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  --background: #ffc93a;
+  --background-activated: #ffc93a;
+  --border-radius: 25px;
+  color: #fd5440;
+  --color-activated: #fd5440;
+  font-weight: 700;
+  font-size: 13px;
+  height: 50px;
+  font-family: 'Mukta', sans-serif;
+}

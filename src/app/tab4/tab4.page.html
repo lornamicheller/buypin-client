@@ -1,0 +1,55 @@
+<div class="orange-bg">
+  <ion-card class="logo-card">
+    <h5 class="logo">{{ storeName }}</h5>
+    <!-- <img class="logo" src="assets/logo prueba.png"> -->
+
+    <ion-button style="--box-shadow: none;" (click)="goBack()" class="arrow-btn">
+      <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+    </ion-button>
+
+    <div class="cart-item">
+      <ion-button style="--box-shadow: none;" (click)="cartOpen()" class="cart-btn">
+        <img src="assets/cartera.png" width="30px" height="30px" style="object-fit: contain;">
+        <ion-badge color="success" class="quantity-number">{{ cartNumber }}</ion-badge>
+      </ion-button>
+    </div>
+  </ion-card>
+</div>
+<ion-content >
+  <ion-card  class="article-card" >
+    <img *ngIf = "picture==null"  src="assets/032731.jpg" width="300px" height="200px" style="object-fit: contain;">
+    <img  *ngIf = "picture !=null" src="{{picture}}" width="300px" height="200px" style="object-fit: contain;">
+    <p class="article-name">{{ name }}</p>
+    <p class="article-content">{{ description }}</p>
+    <h1 class="article-price">${{ showPrice }}</h1>
+  </ion-card>
+
+  <ion-card class="btn-card">
+    <ion-grid style="padding: 0;">
+      <ion-row>
+
+        <!-- first btn -->
+        <ion-col class="whole-btn" size="5">
+          <ion-grid style="padding: 0;">
+            <ion-row>
+              <ion-col class="less-col" size="4">
+                <ion-button style="--box-shadow: none;"  class="less-btn" (click)="decrementValue()"> - </ion-button>
+              </ion-col>
+              <ion-col size="4">
+                <ion-badge class="quantity-number2">{{ quantityNumber }}</ion-badge>
+              </ion-col>
+              <ion-col class="right-col" size="4">
+                <ion-button style="--box-shadow: none;"  class="plus-btn" (click)="incrementValue()"> + </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <!-- /first btn -->
+        <ion-col class="whole-btn" size="5">
+          <ion-button style="--box-shadow: none;" expand="block" (click)="addToCart()" class="add-cart-btn">ADD TO CART</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

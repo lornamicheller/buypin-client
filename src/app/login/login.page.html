@@ -1,0 +1,32 @@
+<ion-content class="bg" no-bounce has-bouncing="false" forceOverscroll="false">
+
+  <ion-card class="logo-card">
+    <img class="logo" src="assets/logo prueba.png">
+  </ion-card>
+
+
+  <ion-card class="bag-card">
+    <img class="bag" src="assets/bolsa.png">
+  </ion-card>
+
+  <ion-card class="login-card">
+    <ion-input [(ngModel)]="username" id="name" type="text" placeholder="EMAIL">
+      <ion-icon class="icon" ios="ios-person" md="md-person"></ion-icon>
+    </ion-input>
+    <ion-input [(ngModel)]="password" id="password" type="password" placeholder="PASSWORD">
+      <ion-icon class="icon" ios="ios-lock" md="md-lock"></ion-icon>
+    </ion-input>
+    <ion-button style="--box-shadow: none;"  (click)="signIn()" routerLink="/tab1" class="login-btn" expand="block">LOGIN</ion-button>
+    <ion-button style="--box-shadow: none;"  routerLink="/register" class="create-btn" expand="block">CREATE ACCOUNT</ion-button>
+  </ion-card>
+
+  <ion-card style="box-shadow: none; margin: 0; margin-top: 200px;">
+
+    <img class="facebook-btn" ion-button src="assets/facebook icon.png">
+
+
+    <ion-button (click)="openPage3()" expand="full"
+            style="text-align: center; --box-shadow: none; --background: transparent; --background-activated: transparent; font-weight: 700;font-size: 15px; font-family: 'Mukta', sans-serif;">
+            Forgot password?</ion-button>
+  </ion-card>
+</ion-content>

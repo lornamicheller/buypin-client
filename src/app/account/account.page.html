@@ -1,0 +1,30 @@
+<ion-card class="logo-card">
+  <h1 class="logo">Cuenta</h1>
+  <ion-icon (click)="goBack()" ion-button class="icon-btn" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+</ion-card>
+
+
+<ion-content>
+
+  <ion-item>
+    <ion-input [(ngModel)]="name" class="input" type="text" placeholder="Nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="email" class="input" type="text" placeholder="Correo Electrónico"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="phone" class="input" type="tel" placeholder="Teléfono"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input class="input" type="text" placeholder="Dirección"></ion-input>
+  </ion-item>
+
+  <ion-card>
+
+    <ion-button class="save-btn" (click)="updateUser()" expand="block">GUARDAR</ion-button>
+
+  </ion-card>
+</ion-content>

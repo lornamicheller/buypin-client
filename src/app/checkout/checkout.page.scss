@@ -1,0 +1,89 @@
+.orange-bg {
+  background: #FD5440;
+}
+
+.logo-card {
+  box-shadow: none;
+  padding-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tags {
+  --background: rgb(255, 255, 255);
+  --background-activated: rgb(255, 255, 255);
+  color: #FD5440;
+  --color-activated: #FD5440;
+  font-weight: 700;
+  font-size: 12px;
+  --border-radius: 25px;
+}
+
+.logo {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-weight: 700;
+}
+
+.arrow-icon {
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.arrow-btn {
+  --background: transparent;
+  --background-activated: transparent;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  --box-shadow: none;
+}
+
+.payment-card {
+  box-shadow: none;
+  border-radius: 0;
+  background: rgba(223, 223, 223, 0.253);
+  margin: 0;
+  padding: 10px;
+}
+
+.input-card {
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card {
+  border-bottom: 1px solid rgb(175, 175, 175);
+  margin-bottom: 10px;
+  --padding-start: 10px;
+}
+
+.check {
+  --background-checked: #FFC93A;
+  --border-radius: 6px;
+  --checkmark-color: #FD5440;
+  --border-color-checked: #FFC93A;
+  --border-color: #FFC93A;
+  --border-width: 2px;
+  --border-color: #FD5440;
+  --background: #FD5440;
+}
+
+.next-btn {
+  --background: #FD5440;
+  --background-activated: #FD5440;
+  color: #FFC93A;
+  --color-activated: #FFC93A;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-weight: 700;
+  font-size: 13px;
+  height: 50px;
+  --border-radius: 25px;
+  margin-top: 40px;
+}

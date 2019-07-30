@@ -1,0 +1,17 @@
+<div class="orange-bg">
+    <ion-card class="logo-card">
+      <h5 class="logo">Address</h5>
+      <ion-button style="--box-shadow: none;"  (click)="goBack()" class="arrow-btn">
+          <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </div>
+
+<ion-content no-bounce has-bouncing="false" forceOverscroll="false">
+  <ion-card class="logo-card">
+    <img class="location-icon" src="assets/shipinaddress.png">
+    <ion-button style="--box-shadow: none;" (click)="openPage()" class="create-btn" expand="block">ADD ADDRESS</ion-button>
+    <p style="text-align: center; font-weight: 700; margin-left: 20px; margin-right: 20px;">Agregar dirección donde
+      quiere que se le entregue.</p>
+  </ion-card>
+</ion-content>

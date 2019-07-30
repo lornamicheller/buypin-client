@@ -1,0 +1,21 @@
+<ion-content class="bg-orange">
+  <ion-card class="logo-card">
+    <img class="logo" src="assets/logo prueba.png">
+
+    <ion-button style="--box-shadow: none;"  (click)="goBack()" class="arrow-btn">
+      <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+    </ion-button>
+
+    <img class="location-icon" src="assets/location.png">
+    <!-- <ion-input class="location-input" clearInput placeholder="San Juan, Puerto Rico"></ion-input>
+
+    <p class="location-title">
+      <ion-icon style="width: 25px; height: 25px;" name="navigate"></ion-icon>
+      Usar mi localización actual
+    </p> -->
+
+    <ion-button style="--box-shadow: none;"  (click)="enableLocation()" class="create-btn" expand="block">UBICACIÓN ACTUAL</ion-button>
+    <p>{{data}}</p>
+  </ion-card>
+
+</ion-content>
