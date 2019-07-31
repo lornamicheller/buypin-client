@@ -5,7 +5,7 @@
 </div>
 
 <ion-content>
-    <ion-card *ngFor="let item of storeCategory" href="/tab1" (click)="openPage(item)" ion-button class="first-card">
+    <ion-card *ngFor="let item of storeCategory" (click)="openPage(item)" ion-button class="first-card">
         <img src="{{item.get('categoryImg').url()}}" width="200px" height="200px" style="object-fit: contain;">
         <p class="title-store">{{ item.get("name") }}</p>
     </ion-card>

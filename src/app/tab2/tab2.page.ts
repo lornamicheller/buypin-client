@@ -179,15 +179,15 @@ export class Tab2Page {
     return null;
   }
 
-  // openHome() {
-  //   let options: NativeTransitionOptions = {
-  //     duration: 300,
-  //     iosdelay: 300
-  //   }
-  //   console.log(options);
-  //   this.nativePageTransitions.fade(options);
-  //   this.navigate.navigateRoot("/tab1");
-  // }
+  openHome() {
+    let options: NativeTransitionOptions = {
+      duration: 300,
+      iosdelay: 300
+    }
+    console.log(options);
+    this.nativePageTransitions.fade(options);
+    this.navigate.navigateRoot("/tab1");
+  }
 
   openProfile() {
     let options: NativeTransitionOptions = {

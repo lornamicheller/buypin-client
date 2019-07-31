@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
         console.log(this.username);
         console.log(this.password);
         console.log('Logged in successfully', resp);
-        // this.openPage2();
+        this.openPage2();
       }, err => {
         console.log('Error logging in', err);
       });
