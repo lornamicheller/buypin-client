@@ -6,39 +6,45 @@
       <ion-icon class="arrow-icon" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
     </ion-button>
 
+    <ion-button style="--box-shadow: none;" (click)="goToAddress()" class="add-btn">
+      <ion-ripple-effect></ion-ripple-effect>
+      <ion-icon class="add-icon" ios="ios-add" md="md-add"></ion-icon>
+  </ion-button>
+
   </ion-card>
 
 </div>
 
 <ion-content>
-  <ion-card 
+ <!--<ion-card 
     style="box-shadow: none; border-radius: 0; border-bottom: 1px solid grey; margin-left: 0; margin-right: 0; padding-left: 10px; padding-right: 10px;">
-    <p style="font-size: 13px; font-weight: 700;">NOMBRE</p>
-    <p style="font-size: 13px; font-weight: 300px; color: black;">{{name}}</p>
+    <p style="font-size: 13px; font-weight: 700;">Escoja </p> -->
+    <!-- <p style="font-size: 13px; font-weight: 300px; color: black;">{{name}}</p> -->
     <!-- <ion-button
       style="--box-shadow: none; --background: transparent; --background-actvated: transparent; position: absolute; top: 0; right: 0;">
       <ion-icon style="color: #FD5440; width: 40px; height: 40px;" ios="ios-help" md="md-help"></ion-icon>
-    </ion-button> -->
-  </ion-card>
+    </ion-button> 
+  </ion-card> -->
 
-  <ion-card 
+  <ion-card *ngFor=" let add of address2"  ion-button 
     style="box-shadow: none; border-radius: 0; border-bottom: 1px solid grey; margin-left: 0; margin-right: 0; padding-left: 10px; padding-right: 10px;">
     <p style="font-size: 13px; font-weight: 700;">DIRECCIÓN COMPLETA</p>
-    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{address}}</p>
-    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{apt}}</p>
-    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{city}}</p>
-    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{state}}</p>
+    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{add.get("Address")}}</p>
+    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{add.get('apt')}}</p>
+    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{add.get('placeName')}}</p>
+    <p style="font-size: 13px; font-weight: 300px; color: black;"> {{add.get('state')}}</p>
+     <ion-button style="--box-shadow: none;" class="next-btn" (click)="openPage(add)" expand="block">Usar Dirección</ion-button>
     <!-- <ion-button
       style="--box-shadow: none; --background: transparent; --background-actvated: transparent; position: absolute; top: 0; right: 0;">
       <ion-icon style="color: #FD5440; width: 40px; height: 40px;" ios="ios-help" md="md-help"></ion-icon>
     </ion-button> -->
   </ion-card>
 
-  <ion-card
+  <!-- <ion-card
     style="box-shadow: none; border-radius: 0; border-bottom: 1px solid grey; margin-left: 0; margin-right: 0; padding-left: 10px; padding-right: 10px;">
    
-    <ion-textarea [(ngModel)]="note" class="note-text" placeholder="ADD NOTE"></ion-textarea>
-  </ion-card>
+    <ion-textarea [(ngModel)]="notes" class="note-text" placeholder="ADD NOTE"></ion-textarea>
+  </ion-card> -->
 
-  <ion-button style="--box-shadow: none;" class="next-btn" (click)="openPage()" expand="block">NEXT</ion-button>
+  <!-- <ion-button style="--box-shadow: none;" class="next-btn" (click)="addNote()" expand="block">NEXT</ion-button> -->
 </ion-content>

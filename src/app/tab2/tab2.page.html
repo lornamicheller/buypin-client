@@ -6,7 +6,7 @@
     <div class="cart-item">
        
             
-            <ion-icon ion-button class="btnBack" (click)="openHome()" name="ios-arrow-back"></ion-icon>
+            <ion-icon ion-button class="btnBack" (click)="goBack()" name="ios-arrow-back"></ion-icon>
           
       <!-- <ion-button style="--box-shadow: none;"  (click)="cartOpen()" class="cart-btn">
         <img src="assets/cartera.png" width="30px" height="30px" style="object-fit: contain;">
@@ -22,23 +22,25 @@
 
   <ion-card class="card-store" *ngFor="let store of stores">
     <div>
-      <img style="height: 160px; object-fit: cover;" *ngIf = "store.get('storePicture')==null"src="assets/store1.jpg">
-      <img style="height: 160px; object-fit: cover;" *ngIf = "store.get('storePicture')!=null" src="{{store.get('storePicture').url()}}">
+      <img style="height: 160px; object-fit: cover;" *ngIf = "store.data.get('storePicture')==null"src="assets/store1.jpg">
+      <img style="height: 160px; object-fit: cover;" *ngIf = "store.data.get('storePicture')!=null" src="{{store.data.get('storePicture').url()}}">
     </div>
     <!-- <h4 class="title-store">{{store.get("Name")}}</h4> -->
     <ion-grid>
       <ion-row>
         <ion-col size="8">
-          <h4 class="title-store">{{store.get("Name")}}</h4>
-          <p  *ngIf="startHour(store.get('Schedule')) != null" class="time">Horario: <span style="font-weight: 300;">{{startHour(store.get("Schedule"))}}</span> - <span
-              style="font-weight: 300;">{{endHour(store.get("Schedule"))}}</span></p>
+          <h4 class="title-store">{{store.data.get("Name")}}</h4>
+          <p  *ngIf="startHour(store.data.get('Schedule')) != null" class="time">Horario: <span style="font-weight: 300;">{{startHour(store.data.get("Schedule"))}}</span> - <span
+              style="font-weight: 300;">{{endHour(store.data.get("Schedule"))}}</span></p>
 
-              <p  *ngIf="startHour(store.get('Schedule')) == null" class="time">Horario: <span style="font-weight: 300;">No Disponible</span></p>
-          <p class="phone">Teléfono: <span style="font-weight: 300;">{{ formatPhone(store.get("Phone")) }}</span></p>
+              <p  *ngIf="startHour(store.data.get('Schedule')) == null" class="time">Horario: <span style="font-weight: 300;">No Disponible</span></p>
+          <p *ngIf="store.data.get('Phone') != null" class="phone">Teléfono: <span style="font-weight: 300;">{{ formatPhone(store.data.get("Phone")) }}</span></p>
+          <p  *ngIf="store.data.get('Phone') == null"  class="phone">Teléfono: <span style="font-weight: 300;">No disponible</span></p>
         </ion-col>
         <ion-col size="4">
-          <ion-button *ngIf="getDayWork(store.get('Schedule')) == true" style="--box-shadow: none;"  expand="block" color="success" (click)="openPage(store)" class="open">OPEN</ion-button>
-          <ion-button  *ngIf="getDayWork(store.get('Schedule')) != true" style="--box-shadow: none;"  expand="block" color="danger"  class="close" disabled="true">CLOSE</ion-button>
+          <!-- *ngIf="getSchedule(store.id) == true" -->
+           <ion-button *ngIf="store.open == true" id="abierto" style="--box-shadow: none; "  expand="block" color="success" (click)="openPage(store.data)" class="open">ABIERTO</ion-button>  
+           <ion-button *ngIf="store.open == false" id="cerrado"  style="--box-shadow: none; "  expand="block" color="danger"  class="close" disabled="true">CERRADO</ion-button>  
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -177,9 +179,9 @@
     </ion-tab-button>
 
 
-    <ion-tab-button (click)="openOthers()">
+   <ion-tab-button (click)="openOthers()">
       <img src="assets/other.png" width="30px" height="30px">
-      <!-- <ion-label>Tab Three</ion-label> -->
+    
     </ion-tab-button>
 
   </ion-tab-bar>

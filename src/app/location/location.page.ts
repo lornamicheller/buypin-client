@@ -3,7 +3,10 @@ import { NavController } from '@ionic/angular';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
-import { AlertController } from '@ionic/angular';
+import { Parse } from 'parse';
+import { AlertController } from "@ionic/angular";
+
+let parse = require("parse");
 @Component({
   selector: 'app-location',
   templateUrl: './location.page.html',
@@ -12,15 +15,19 @@ import { AlertController } from '@ionic/angular';
 
 export class LocationPage implements OnInit {
 data:any;
+status:any;
+
   constructor(
     public navigate: NavController,
     public nativePageTransitions: NativePageTransitions,
     public geolocation: Geolocation,
     public locationAccuracy: LocationAccuracy,
     public alert:AlertController
-  ) { }
+  ) {   Parse.initialize("C0XMchZu6Y9XWNUK4lM1UHnnuXhC3dcdpa5fGYpO", "EdN4Xnln11to6pfyNaQ5HD05laenoYu04txYAcfo");
+  Parse.serverURL = 'https://parseapi.back4app.com/';}
 
   ngOnInit() {
+    this.status = true;
     this.enableLocation();
   }
 
@@ -58,7 +65,12 @@ data:any;
 
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log(resp);
-      this.empty(JSON.stringify(resp));
+      console.log(resp.coords.latitude);
+      console.log(resp.coords.longitude);
+
+      
+
+      // this.empty(JSON.stringify(resp));
       // resp.coords.latitude
       // resp.coords.longitude
       // this.data = 'Lat: ' + resp.coords.latitude + '<br>' + 'Lng: ' + resp.coords.longitude;
@@ -72,10 +84,11 @@ data:any;
       // data.coords.latitude
       // data.coords.longitude
       console.log('data', data);
-      this.empty(JSON.stringify(data));
+      this.setGeoPoint(data.coords.latitude, data.coords.longitude);
+      // this.empty(JSON.stringify(data));
     });
     console.log('location enabled');
-    this.openPage();
+    // this.openPage();
   }
 
   async empty(message) {
@@ -92,6 +105,21 @@ data:any;
       }]
     });
     await alert.present();
+  }
+
+  setGeoPoint(latitude,longitude)
+  {
+    Parse.Cloud.run('insetGeoPoint', {
+      userId: Parse.User.current().id,
+      latitud: latitude,
+      longitud: longitude
+    }).then((result) => {
+
+      console.log("Coordenadas Grabadas");
+      this.status= false;
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }

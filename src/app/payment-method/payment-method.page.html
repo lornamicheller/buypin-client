@@ -5,22 +5,25 @@
 
 <ion-content>
   <ion-card style="margin-bottom: 0;">
-    <p class="articles">Tarjetas de crédito</p>
+    <p *ngIf="status == false" class="articles">Tarjetas de crédito</p>
+    <p *ngIf="status == true" class="articles">Seleccione tarjeta de crédito para realizar el pago  </p>
+
+
   </ion-card>
 
   <!-- first - card -->
 
-
-  <ion-card class="article-container">
-    <ion-img *ngIf="status == true" ion-button (click)="payment()" src="assets/visa.png" class="card-logo"></ion-img>
+<p *ngIf="cards == null || cards == ''" style="text-align: center;"> No hay Tarjetas registradas</p>
+  <ion-card *ngFor="let card of cards" class="article-container">
+    <ion-img *ngIf="status == true" ion-button (click)="makePayment(card)" src="assets/visa.png" class="card-logo"></ion-img>
     <ion-img *ngIf="status == false" src="assets/visa.png" class="card-logo"></ion-img>
     <ion-grid style="border-top: 1px solid rgb(206, 206, 206); background: #FD5440">
       <ion-row>
         <ion-col size="8" style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">XXXX-XXXX-XXXX-4242</p>
+          <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">XXXX-XXXX-XXXX-{{card.last4}}</p>
         </ion-col>
         <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <ion-icon ion-button class="delete-btn" ios="ios-trash" md="md-trash"></ion-icon>
+          <ion-icon ion-button (click)="presentAlertConfirm(card)" class="delete-btn" ios="ios-trash" md="md-trash"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -1,0 +1,32 @@
+
+<ion-content class="bg">
+
+  <ion-card>
+    <img class="logo-img" src="assets/logo prueba.png">
+    <p style="color: white; font-weight: 700; font-size: 30px; text-align: center; font-family: 'Mukta', sans-serif; margin: 0;">¡PRONTO!</p>
+    <p style="color: white; text-align: center; font-family: 'Mukta', sans-serif; margin-top: 0; font-size: 20px;">Área de servicios</p>
+  </ion-card>
+
+</ion-content>
+
+<ion-tab-bar slot="bottom" style="padding-top: 10px; padding-bottom: 15px; --background: #FD5440;">
+    <ion-tab-button (click)="openHome()">
+        <img src="assets/home.png" width="30px" height="30px">
+        <!-- <ion-label>Tab One</ion-label> -->
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="search">
+      <img src="assets/search.png" width="30px" height="30px">
+      <ion-label>Tab Two</ion-label>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="profile" (click)="openProfile()">
+        <img src="assets/profile.png" width="30px" height="30px">
+        <!-- <ion-label>Tab Three</ion-label> -->
+    </ion-tab-button>
+
+
+    <ion-tab-button (click)="openOthers()">
+        <img src="assets/other.png" width="30px" height="30px">
+    </ion-tab-button>
+</ion-tab-bar>

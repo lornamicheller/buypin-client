@@ -16,12 +16,12 @@ export class PopoverserviceComponent implements OnInit {
   ngOnInit() {}
 
  openPage() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab1");
     this.DismissClick();
   }

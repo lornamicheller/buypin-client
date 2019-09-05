@@ -173,45 +173,45 @@ export class ProfilePage implements OnInit {
   }
 
   openPage() {
-    let options: NativeTransitionOptions = {
-      direction: 'left',
-      duration: 400,
-      slowdownfactor: -1,
-      slidePixels: 20,
-      iosdelay: 100
-    }
-    console.log(options);
-    this.nativePageTransitions.slide(options);
+    // let options: NativeTransitionOptions = {
+    //   direction: 'left',
+    //   duration: 400,
+    //   slowdownfactor: -1,
+    //   slidePixels: 20,
+    //   iosdelay: 100
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.slide(options);
     this.navigate.navigateRoot("/login");
   }
 
   openOrderHistory() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/history-order");
   }
 
   openPayment() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/payment-method");
   }
 
   openAccount(object) {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/account");
     this.provider.usrAddress = object;
   }

@@ -5,7 +5,8 @@
 </div>
 
 <ion-content>
-    <ion-card *ngFor="let item of storeCategory" (click)="openPage(item)" ion-button class="first-card">
+    <ion-card *ngFor="let item of storeCategory" routerLink="/tab2" (click)="openPage(item)" ion-button
+        class="first-card">
         <img src="{{item.get('categoryImg').url()}}" width="200px" height="200px" style="object-fit: contain;">
         <p class="title-store">{{ item.get("name") }}</p>
     </ion-card>
@@ -54,8 +55,8 @@
 
 <ion-tab-bar slot="bottom" style="padding-top: 10px; padding-bottom: 15px; --background: #FD5440;">
     <ion-tab-button (click)="openHome()">
-      <img src="assets/home.png" width="30px" height="30px">
-      <!-- <ion-label>Tab One</ion-label> -->
+        <img src="assets/home.png" width="30px" height="30px">
+        <!-- <ion-label>Tab One</ion-label> -->
     </ion-tab-button>
 
     <!-- <ion-tab-button tab="search">
@@ -64,14 +65,12 @@
     </ion-tab-button> -->
 
     <ion-tab-button tab="profile" (click)="openProfile()">
-      <img src="assets/profile.png" width="30px" height="30px">
-      <!-- <ion-label>Tab Three</ion-label> -->
+        <img src="assets/profile.png" width="30px" height="30px">
+        <!-- <ion-label>Tab Three</ion-label> -->
     </ion-tab-button>
 
 
     <ion-tab-button (click)="openOthers()">
-      <img src="assets/other.png" width="30px" height="30px">
-      <!-- <ion-label>Tab Three</ion-label> -->
+        <img src="assets/other.png" width="30px" height="30px">
     </ion-tab-button>
-
-  </ion-tab-bar>
+</ion-tab-bar>

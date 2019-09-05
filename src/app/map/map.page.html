@@ -1,0 +1,31 @@
+<button class="boton" (click)='navigate()'><ion-icon style="color:white;" name="ios-arrow-back" class=menuBtn></ion-icon></button>
+
+  <ion-card class=mainMenu>
+      <ion-img class=locationIcon src= "assets/your-location.png"></ion-img>
+      <h6 class=actualLoc>Mi ubicación actual</h6> <!-- user's location viewport -->
+      
+      <ion-button class="button-native" style="margin-bottom: 30px; margin-top: 20px; margin-left: 15px; margin-right: 15px; --background:#FD5440;" expand="block" (click)="changePage()">Solicitar</ion-button>
+  </ion-card>
+
+<!-- Map view -->
+<ion-header>
+ 
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <div  id='mapMark' style='width: 100%; height: 100vh;'>  
+      </div>
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+            body { margin:0; padding:0; }
+            #map { position:absolute; top:0; bottom:0; width:100%; }
+      </style>
+    
+</ion-header>
+
+<ion-content>   
+
+
+</ion-content>

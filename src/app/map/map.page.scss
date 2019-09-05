@@ -1,0 +1,76 @@
+.boton{
+    position: absolute;
+    margin-left: 20px;
+    width:50px;
+    height:50px;
+    z-index: 1000;
+    border-radius: 50%;
+    background-color: #FD5440;
+    box-shadow: 50%;
+    margin-top: 40px;
+  }
+
+  .menuBtn{
+    height: 30px;
+    width: 30px;
+    color: white;
+  }
+
+  .mainMenu{
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 100;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  
+
+  .locationIcon{
+    width: 25px;
+    margin-left: 20px;
+    margin-top: 25px;
+    display: inline-flex;
+
+  }
+
+  .actualLoc{
+    display: inline-flex;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  .recoger{
+    display: inline-flex;
+    position: absolute;
+    margin-top: 15px;
+    font-size: 12px;
+    margin-left: 10px;
+    color: gray;
+    font-weight: 100;
+  }
+
+  .destination{
+    display: inline-flex;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 10px;
+  }
+
+  .destino{
+    display: inline-flex;
+    position: absolute;
+    margin-top: 85px;
+    font-size: 12px;
+    margin-left: 10px;
+    color: gray;
+    font-weight: 100;
+  }
+  

@@ -21,6 +21,23 @@
   height: 25px;
 }
 
+.add-btn {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  --background: transparent;
+  --background-activated: transparent;
+  color: #414042;
+  --color-activated: #414042;
+  --box-shadow: none;
+
+}
+.add-icon {
+  color: rgb(255, 255, 255);
+  width: 30px;
+  height: 30px;
+}
+
 .arrow-btn {
   --background: transparent;
   --background-activated: transparent;

@@ -21,7 +21,11 @@ export class AddressResumePage implements OnInit {
   apt: any;
   city: any;
   state: any; 
-
+  objectAddress:any;
+  address2:any;
+  storeId:any;
+  storeZipCode:any;
+  
   constructor(
     public navigate: NavController,
     public nativePageTransitions: NativePageTransitions,
@@ -33,33 +37,100 @@ export class AddressResumePage implements OnInit {
   }
 
   ngOnInit() {
+    this.storeId = this.provider.purchaseCart[0].storeID;
     console.log(Parse.User.current());
     console.log(this.getUserAddress());
     this.getUserAddress();
+    this.getStoreZipCode();
     this.name = Parse.User.current().get('fullName')
   }
 
-  openPage(object) {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
+  getStoreZipCode()
+  {
+    Parse.Cloud.run('getStoreZipCode', { //get the user store
+      storeId:"on2wYAFUyA"
+    }).then (result => {
+    console.log(" Store ZipCodes",result);
+    this.storeZipCode = result;
+    }, (error) => {
+    console.log(error);
+    });
+
+  }
+
+async  openPage(address) {
+    console.log("Address" , address);
+    
+    //verify ZipCode
+
+    var result = await this.verifyZipCode(address);
+
+    if(result == null)
+    {
+      this.zipcodeAlert();
+      console.log("Null");
     }
-    console.log(options);
-    this.provider.nameAdrrs = object;
-    this.nativePageTransitions.fade(options);
-    this.provider.currentLocation = "Checkout";
-    this.addNote();
-    this.navigate.navigateRoot("/payment-method");
+    else if( result == true)
+    {
+      // console.log("true");
+      this.provider.nameAdrrs = this.objectAddress;
+      this.provider.addressObject2 = address;
+  
+      this.provider.currentLocation = "Checkout";
+      // this.navigate.navigateRoot("/payment-method");
+      this.navigate.navigateRoot("/tabs/tabs/tab5");
+    }
+   
+    
+
+    
+  }
+
+  verifyZipCode(address)
+  {
+    for(let i =0; i < this.storeZipCode.length; i ++)    
+    {
+      if(address.get('zipcode') == this.storeZipCode[i])
+      {
+       return true;
+      }
+
+    }
+
+  }
+  async zipcodeAlert() {
+    const alert = await this.alert.create({
+      header: '¡ALERTA!',
+      message: 'Este comercio no entrega a su dirección.',
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }
+      }]
+    });
+
+    await alert.present();
   }
 
   goBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
-    this.navigate.navigateRoot("/shipping-address");
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    // if(this.provider.flag == true)
+    // {
+      this.navigate.navigateRoot('/tab3');
+    // }
+    // else if ( this.provider.flag == false)
+    // {
+    //   this.navigate.navigateRoot("/shipping-address");
+    // }
+    
   }
 
   getUserAddress() {
@@ -68,11 +139,21 @@ export class AddressResumePage implements OnInit {
     Parse.Cloud.run('getAddress', {
       userId: Parse.User.current().id,
     }).then((result) => {
-      console.log(result[0].get('Address') + "\n" + result[0].get('apt') + "\n" + result[0].get('placeName') + "\n" + result[0].get('state'));
-      this.address = result[0].get('Address')
-      this.apt = result[0].get('apt')
-      this.city = result[0].get('placeName')
-      this.state = result[0].get('state');
+
+      this.address2 = result;
+
+      // if(result == null)
+      // {
+      //   this.navigate.navigateRoot('/add-address');
+      // }
+
+      // this.objectAddress = result;
+      // console.log(this.objectAddress);
+      // console.log(result[0].get('Address') + "\n" + result[0].get('apt') + "\n" + result[0].get('placeName') + "\n" + result[0].get('state'));
+      // this.address = result[0].get('Address')
+      // this.apt = result[0].get('apt')
+      // this.city = result[0].get('placeName')
+      // this.state = result[0].get('state');
       // console.log(this.address);
       // this.product = result;
       console.log(result);
@@ -81,21 +162,54 @@ export class AddressResumePage implements OnInit {
     });
   }
 
-  addNote() { // TODO -- not working *****************
-    console.log("we in add note boys");
-    
-    const userId = Parse.User.current().id
-    console.log("we in add note boys");
-    Parse.Cloud.run('setNotes', {
-      userId: this.userId,
-      notes: this.notes
-    }).then((result) => {
-      console.log("Note added")
+  addNote() {
+
+    if(this.notes == null || this.notes == '' )
+    {console.log("es null");
+
+    this.provider.addressObject = this.objectAddress;
+      // this.openPage();
+
+      return;
+    }
+ 
+    else if ( this.notes != null || this.notes != '')
+    {
+      Parse.Cloud.run('setNotes', {
+        userId: Parse.User.current().id,
+        notes: this.notes
+      }).then((result) => {
+        console.log("Note added");
+        this.provider.addressObject = this.objectAddress;
+        console.log(result);
+        // this.openPage();
+      }, (error) => {
+        // this.errorAlert(error);
+        console.log(error);
+      });
+      console.log(this.notes);
+
+    }
+   
+  }
+
+  goToAddress()
+  {
+      this.provider.addresStatus = "Add";
+    this.navigate.navigateRoot('/shipping-address');
+
+  }
+
+  addNoteTest() {
+    var serviceRequest = Parse.Object.extend('ServiceRequest');
+    var query = new serviceRequest(serviceRequest);
+
+    query.set('notes', this.notes);
+
+    query.save().then(result => {
       console.log(result);
-    }, (error) => {
-      // this.errorAlert(error);
+    }, error => {
       console.log(error);
     });
-    console.log(this.notes);
   }
 }

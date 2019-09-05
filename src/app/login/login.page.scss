@@ -48,22 +48,21 @@
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
+  margin-bottom: 0;
 }
 
 #name,
 #password {
-  --background: #FD5440;
   --placeholder-color: rgb(255, 255, 255);
   --placeholder-opacity: 10;
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 11px;
   --padding-start: 5px;
-  margin-bottom: 10px;
-  height: 40px;
   --border-radius: 7px;
   letter-spacing: 1px;
   font-family: 'Mukta', sans-serif;
+  margin-top: 2px;
 }
 
 .login-btn {
@@ -102,9 +101,10 @@
 
 .icon {
   color: white;
-  width: 20px;
-  height: 20px;
-  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 .check {
@@ -118,9 +118,10 @@
 }
 
 .facebook-btn {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 0;
-  left: 90px;
+  width: 30px;
+  height: 30px;
+  // position: absolute;
+  // top: 0;
+  // left: 90px;
+  float: right;
 }

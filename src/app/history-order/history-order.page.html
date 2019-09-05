@@ -1,5 +1,5 @@
 <ion-card class="logo-card">
-  <h1 class="logo">Historial de ordenes</h1>
+  <h1 class="logo">Historial de órdenes</h1>
   <ion-icon (click)="goBack()" ion-button class="icon-btn" ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
 </ion-card>
 
@@ -7,235 +7,39 @@
   <ion-card style="margin-bottom: 0;">
     <p class="articles">Lista de artículos</p>
   </ion-card>
-
-  <!-- first - order -->
-
-  <ion-card style="margin-bottom: 0;">
-    <p class="date">2/ junio/ 2019</p>
-  </ion-card>
-
-
-  <ion-card class="article-container">
-    <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
+  <ion-card *ngFor="let service2 of services" class="article-container">
+    <p class="date" style="margin-left: 10px;"> FECHA : <span>{{service2.get('date')}}</span></p>
+    <ion-grid *ngFor="let items of service2.get('items')" style="border-top: 1px solid rgb(206, 206, 206);">
       <ion-row>
         <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name">Coca Cola</p>
+          <p class="article-name">{{items.prodName}}</p>
         </ion-col>
         <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price">$1.99</p>
+          <p class="price">${{items.prodPrice}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>
-
-    <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-      <ion-row>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name">Doritos</p>
-        </ion-col>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price">$1.99</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-      <ion-row>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name">Colgate</p>
-        </ion-col>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price">$3.99</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-      <ion-row>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name">Barefoot Moscato</p>
-        </ion-col>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price">$8.99</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-      <ion-row>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name">Kraft Mild Cheddar</p>
-        </ion-col>
-        <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price">$2.99</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
     <ion-grid style="border-top: 1px solid rgb(206, 206, 206); background: #FD5440">
       <ion-row>
         <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">TOTAL</p>
+          <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">Total</p>
         </ion-col>
         <ion-col style="padding-top: 0; padding-bottom: 0;">
-          <p class="price" style="color: white; font-weight: 700; font-size: 15px;">$19.95</p>
+          <p class="price" style="color: white; font-weight: 700; font-size: 15px;">${{service2.get('orderTotal')}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <!-- timer -->
+        <ion-col style="padding-top: 0; padding-bottom: 0;">
+          <p class="article-name" id="clock" style="color: white; font-weight: 700; font-size: 15px;">Estado:
+            {{changeStatusIteration(service2.get('status'))}}</p>
+        </ion-col>
+        <ion-col style="padding-top: 0; padding-bottom: 0;">
+          <p *ngIf="changeStatusIteration(service2.get('status')) == 'Solicitado'" ion-button (click)="cancel(service2)"
+            class="price" id="clock" style="color: white; font-weight: 700; font-size: 15px;">Cancelar</p>
+            <ion-button *ngIf="service2.get('status') != 'R' " class="see-more" (click)="openCarInfo(service2)" expand="block">Ver más</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-
-  <!-- first - order-->
-
-  <!-- second - order-->
-
-  <ion-card style="margin-bottom: 0;">
-      <p class="date">4/ junio/ 2019</p>
-    </ion-card>
-  
-  
-    <ion-card class="article-container">
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Coca Cola</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$1.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Doritos</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$1.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Colgate</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$3.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Barefoot Moscato</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$8.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Kraft Mild Cheddar</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$2.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206); background: #FD5440">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">TOTAL</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price" style="color: white; font-weight: 700; font-size: 15px;">$19.95</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-
-  <!-- second - order-->
-
-  <!-- third - order-->
-
-  <ion-card style="margin-bottom: 0;">
-      <p class="date">6/ junio/ 2019</p>
-    </ion-card>
-  
-  
-    <ion-card class="article-container">
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Coca Cola</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$1.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Doritos</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$1.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Colgate</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$3.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Barefoot Moscato</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$8.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206);">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name">Kraft Mild Cheddar</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price">$2.99</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  
-      <ion-grid style="border-top: 1px solid rgb(206, 206, 206); background: #FD5440">
-        <ion-row>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="article-name" style="color: white; font-weight: 700; font-size: 15px;">TOTAL</p>
-          </ion-col>
-          <ion-col style="padding-top: 0; padding-bottom: 0;">
-            <p class="price" style="color: white; font-weight: 700; font-size: 15px;">$19.95</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-
-  <!-- third - order-->
 </ion-content>

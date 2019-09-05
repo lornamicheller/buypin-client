@@ -1,7 +1,10 @@
 <div class="orange-bg">
   <ion-card class="logo-card">
-    <h5 class="logo">Cart</h5>
+      <ion-icon ion-button class="btnBack" (click)="goBack()" name="ios-arrow-back"></ion-icon>
+    <h5 class="logo">Carrito</h5>
     <!-- <img class="logo" src="assets/logo prueba.png"> -->
+
+    
 
     <div class="cart-item">
       <ion-button style="--box-shadow: none;" (click)="cartOpen()" class="cart-btn">
@@ -15,7 +18,7 @@
 
 <ion-content>
   <ion-card *ngFor="let product of products" style="box-shadow: none; margin: 0; border-bottom: 1px solid grey; border-radius: 0;">
-    <ion-icon  ion-button  class="delete-icon" ios="ios-close" (click)="deleteElement(product)" md="md-close"></ion-icon>
+    <ion-icon  ion-button  class="delete-icon" ios="ios-close" (click)="presentAlertConfirm(product)" md="md-close"></ion-icon>
     <ion-grid>
       <ion-row>
         <ion-col size="4">
@@ -27,7 +30,7 @@
           <ion-grid style="padding: 0;">
             <ion-row>
               <ion-col size="5">
-                <p class="price-title">${{product.prodPrice}}</p>
+                <p class="price-title">${{changeStringToFloat(product.originalPrice)}}</p>
               </ion-col>
               <ion-col class="whole-btn" size="7">
                 <ion-grid style="padding: 0;">
@@ -129,21 +132,26 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6">
-          <p>Starting Subtotal</p>
-          <p>Extra Savings</p>
-          <p>Subtotal</p>
-          <p>Delivery Fee</p>
+          <p>Subtotal Inicial</p>
           <p>Taxes</p>
-          <p style="font-weight: 700; color: #fd5440;">Order Total</p>
+          <!-- <p>Descuentos</p> -->
+          <!-- <p>Subtotal</p> -->
+          <p>Delivery Fee</p>
+          <!-- <p *ngIf="ivuStatus == true"> Producto sin IVU</p> -->
+          
+          <p style="font-weight: 700; color: #fd5440;">Total de la compra</p>
         </ion-col>
 
         <ion-col size="6">
-          <p style="text-align: right">{{ startingSubtotal }}</p>
-          <p style="text-align: right">{{ extraSavings }}</p>
-          <p style="text-align: right">$0.00</p>
-          <p style="text-align: right">$0.00</p>
-          <p style="text-align: right">$0.00</p>
-          <p style="text-align: right; font-weight: 700; color: #fd5440;">$0.00</p>
+          <p style="text-align: right">${{changeStringToFloat(subtotalLabel) }}</p>
+          <p style="text-align: right">${{changeStringToFloat(taxPrice)}}</p>
+          <!-- <p style="text-align: right">$0.00</p> -->
+          <!-- <p style="text-align: right">${{startingSubtotal}}</p> -->
+          <p style="text-align: right">${{changeStringToFloat(deliveryFeeDat)}}</p>
+          <!-- <p *ngIf="ivuStatus == true" style="text-align: right">${{ivuPrice}}</p> -->
+
+          
+          <p style="text-align: right; font-weight: 700; color: #fd5440;">${{changeStringToFloat(total)}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -152,14 +160,13 @@
   <ion-card class="total-card">
     <ion-grid>
       <ion-row>
-        <ion-col size="4">
-          <p>Order total</p>
-          <p style="text-align: left; font-weight: 700; color: #fd5440;">$25.99</p>
-        </ion-col>
+        <!-- <ion-col size="4">
+         <p>Total de la compra</p>
+          <p style="text-align: left; font-weight: 700; color: #fd5440;">${{total}}</p> 
+        </ion-col> -->
 
-        <ion-col size="8">
-          <ion-button style="--box-shadow: none;" (click)="openPage()" class="checkout-btn" expand="block">PROCEED TO
-            CHECKOUT</ion-button>
+        <ion-col size="12">
+          <ion-button style="--box-shadow: none;" (click)="openPage()" class="checkout-btn" expand="block">PROCEDER A PAGAR</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

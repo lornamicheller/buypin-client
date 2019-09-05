@@ -4,6 +4,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { Parse } from 'parse';
 import { AlertController } from "@ionic/angular";
 import { BuypinproviderService } from "../buypinprovider.service";
+import { LoadingController } from '@ionic/angular';
 
 const parse = require("parse");
 
@@ -41,6 +42,7 @@ export class Tab3Page {
   image:any;
 
   constructor(
+    public loadingController: LoadingController,
     public navigate: NavController,
     public nativePageTransitions: NativePageTransitions,
     public alert: AlertController,
@@ -51,8 +53,10 @@ export class Tab3Page {
   }
 
   ngOnInit() {
+    
     this.categoryArray =this.provider.storeId.get("Menu");
     console.log(this.categoryArray);
+    this.presentLoading();
     this.getProduct();
     this.storeName = this.provider.storeId.get('Name');
    
@@ -62,33 +66,48 @@ export class Tab3Page {
   }
 
   openPage(object) {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.provider.itemObject = object;
     this.navigate.navigateRoot("/tabs/tabs/tab4");
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Buscando productos...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+    // let e;
+    // this.presentPopover(e);
+  }
+
   cartOpen() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
-    this.navigate.navigateRoot("/tabs/tabs/tab5");
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    // this.navigate.navigateRoot("/tabs/tabs/tab5");
+    this.navigate.navigateRoot("/address-resume");
   }
 
   goBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab2");
   }
 
@@ -106,33 +125,33 @@ export class Tab3Page {
   }
 
   openHome() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab1");
   }
 
   openProfile() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/profile");
   }
 
   openOthers() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
-    this.navigate.navigateRoot("");
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    this.navigate.navigateRoot("/service-area");
   }
 
   filter(data)
@@ -155,26 +174,86 @@ export class Tab3Page {
 
   object(data) {
 
-    console.log(data);
+    console.log("DATAAA:",data);
+    console.log("IVU", data.get('applyIvu'));
     console.log(data.get('Name'));
     console.log(data.id);
     console.log(data.get('Price'));
     console.log(data.get('picture').url());
-    console.log(data.get('storeId').id);
+    console.log("store id",data.get('storeId').id);
     console.log(data.get('Description'));
 
-    this.prodObj = {
-      "prodName": data.get('Name'),
-      "prodID": data.id,
-      "originalPrice": data.get('Price'),
-      "prodImage":data.get('picture').url(),
-      "prodPrice": data.get('Price'),
-      "storeID": data.get('storeId').id,
-      "description": data.get('Description'),
-      "quantityNumber":1
-    };
+
+
+    if(this.provider.purchaseCart.length == 0)
+    {
+      console.log("1");
+      this.prodObj = {
+        "prodName": data.get('Name'),
+        "prodID": data.id,
+        "ivu": data.get('applyIvu'),
+        "originalPrice": data.get('Price'),
+        "prodImage":data.get('picture').url(),
+        "prodPrice": data.get('Price'),
+        "storeID": data.get('storeId').id,
+        "description": data.get('Description'),
+        "quantityNumber":1
+       };
+    }
+
+   else if(this.provider.purchaseCart.length > 0)
+    { 
+      console.log("no es null");
+
+        for(let i =0; i < this.provider.purchaseCart.length; i ++)
+        {
+          console.log("entrando al for");
+            if(this.provider.purchaseCart[i].storeID === data.get('storeId').id)
+            {
+              console.log("id Igual");
+              this.prodObj = {
+                "prodName": data.get('Name'),
+                "prodID": data.id,
+                "ivu": data.get('applyIvu'),
+                "originalPrice": data.get('Price'),
+                "prodImage":data.get('picture').url(),
+                "prodPrice": data.get('Price'),
+                "storeID": data.get('storeId').id,
+                "description": data.get('Description'),
+                "quantityNumber":1
+               };
+              this.addToCart();
+              // return;
+            }
+            else if(this.provider.purchaseCart[i].storeID != data.get('storeId').id)
+            {
+              this.empty("Lo sentimos, no se permite escoger productos de diferentes tiendas.");
+              return;
+            }
+        }
+        return;
+    }
+
+    
     console.log(this.prodObj);
     this.addToCart();
+  }
+
+  async empty(message) {
+    const alert = await this.alert.create({
+      header: '¡ALERTA!',
+      message: message,
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+          this.navigate.navigateRoot('/tab2');
+        }
+      }]
+    });
+    await alert.present();
   }
 
 

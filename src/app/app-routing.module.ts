@@ -28,7 +28,10 @@ const routes: Routes = [
   { path: 'payment-method', loadChildren: './payment-method/payment-method.module#PaymentMethodPageModule' },
   { path: 'edit-payment', loadChildren: './edit-payment/edit-payment.module#EditPaymentPageModule' },
   { path: 'account', loadChildren: './account/account.module#AccountPageModule' },
-  { path: 'search', loadChildren: './search/search.module#SearchPageModule' }
+  { path: 'search', loadChildren: './search/search.module#SearchPageModule' },
+  { path: 'map', loadChildren: './map/map.module#MapPageModule' },
+  { path: 'card-info', loadChildren: './card-info/card-info.module#CardInfoPageModule' },
+  { path: 'service-area', loadChildren: './service-area/service-area.module#ServiceAreaPageModule' }
   // { path: 'tutorial', loadChildren: './tutorial/tutorial.module#TutorialPageModule' }
 ];
 @NgModule({

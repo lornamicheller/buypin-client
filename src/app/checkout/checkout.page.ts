@@ -3,7 +3,10 @@ import { NavController } from "@ionic/angular";
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { PopoverController } from '@ionic/angular';
 import { PopoverserviceComponent } from './../popoverservice/popoverservice.component';
+import { Parse } from 'parse';
+import { AlertController } from "@ionic/angular";
 
+let parse = require("parse");
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.page.html',
@@ -11,7 +14,11 @@ import { PopoverserviceComponent } from './../popoverservice/popoverservice.comp
 })
 export class CheckoutPage implements OnInit {
 
-  constructor(public navigate : NavController, public nativePageTransitions: NativePageTransitions,public popoverController: PopoverController) { }
+  constructor(public navigate : NavController, public nativePageTransitions: NativePageTransitions,public popoverController: PopoverController) 
+  { 
+    Parse.initialize("C0XMchZu6Y9XWNUK4lM1UHnnuXhC3dcdpa5fGYpO", "EdN4Xnln11to6pfyNaQ5HD05laenoYu04txYAcfo");
+  Parse.serverURL = 'https://parseapi.back4app.com/';
+  }
 
   ngOnInit() {
   }
@@ -30,12 +37,12 @@ export class CheckoutPage implements OnInit {
   // }
 
   goBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/address-resume");
   }
 

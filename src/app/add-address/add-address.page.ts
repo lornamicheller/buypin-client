@@ -30,25 +30,48 @@ export class AddAddressPage implements OnInit {
 
   ngOnInit() {
 
+    // this.verifyCard();
+
   }
 
+  // verifyCard()
+  // {
+  //   console.log(Parse.User.current().id);
+  //   Parse.Cloud.run('getAddress', {
+  //     userId: Parse.User.current().id,
+  //   }).then((result) => {
+      
+  //     if(result != null )
+  //     {
+  //       console.log("Hay address");
+  //       this.navigate.navigateRoot('/address-resume');
+  //     }
+      
+      
+  //     console.log(result);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+
+  // }
+
   openPage() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/shipping-address");
   }
 
   goBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/tab5");
   }
 

@@ -1,6 +1,6 @@
 <div class="orange-bg">
   <ion-card class="logo-card">
-    <h5 class="logo">Address</h5>
+    <h5 class="logo">Dirección</h5>
     <!-- <img class="logo" src="assets/logo prueba.png"> -->
 
     <ion-button style="--box-shadow: none;"  (click)="goBack()" class="arrow-btn">
@@ -19,32 +19,32 @@
 
     <ion-input [(ngModel)]="apt" type="text" class="name" placeholder="Suite, apt (Opcional)"></ion-input>
 
-    <ion-input [(ngModel)]="city" type="text" class="name" placeholder="City"></ion-input>
+    <ion-input [(ngModel)]="city" type="text" class="name" placeholder="Ciudad"></ion-input>
 
     <ion-grid style="margin: 0; padding: 0;">
       <ion-row>
         <ion-col style="padding: 0; padding-right: 5px;">
-          <ion-input [(ngModel)]="state" type="text" class="name2" placeholder="Ciudad"></ion-input>
+          <ion-input [(ngModel)]="state" type="text" class="name2" placeholder="Estado"></ion-input>
         </ion-col>
 
 
         <ion-col style="padding: 0; padding-left: 5px;">
-            <ion-select [(ngModel)]="zipcode" class="name3" value="brown" placeholder="Código Postal" okText="Okay" cancelText="Dismiss">
-                <ion-select-option value="00680">00680</ion-select-option>
-                <ion-select-option value="00682">00682</ion-select-option>
+            <ion-select [(ngModel)]="zipcode" class="name3" value="brown" placeholder="Código Postal" okText="Ok" cancelText="Cancelar">
+                <ion-select-option *ngFor=" let zipcode of allZipCodes" value="{{zipcode.get('zipcode')}}">{{zipcode.get('zipcode')}}</ion-select-option>
+                <!-- <ion-select-option value="00682">00682</ion-select-option>
                 <ion-select-option value="00662">00662</ion-select-option>
                 <ion-select-option value="00603">00603</ion-select-option>
                 <ion-select-option value="00605">00605</ion-select-option>
                 <ion-select-option value="00602">00602</ion-select-option>
                 <ion-select-option value="00610">00610</ion-select-option>
-                <ion-select-option value="00677">00677</ion-select-option>
+                <ion-select-option value="00677">00677</ion-select-option> -->
               </ion-select>
           <!-- <ion-input [(ngModel)]="zipcode" type="text" class="name2" placeholder="Zip Code"></ion-input> -->
         </ion-col>
       </ion-row>
     </ion-grid>
 
-    <ion-button style="--box-shadow: none;"  (click)="addAddress()" class="create-btn" expand="block">ADD ADDRESS</ion-button>
+    <ion-button style="--box-shadow: none;"  (click)="addAddress()" class="create-btn" expand="block">Añadir Dirección</ion-button>
   </ion-card>
 
 </ion-content>

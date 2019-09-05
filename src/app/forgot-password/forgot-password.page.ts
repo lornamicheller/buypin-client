@@ -28,22 +28,22 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   openPage() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/login");
   }
 
   goBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300, 
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300, 
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/login");
   }
 

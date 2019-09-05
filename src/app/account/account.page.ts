@@ -4,6 +4,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { Parse } from 'parse';
 import { AlertController } from "@ionic/angular";
 import { BuypinproviderService } from "./../../app/buypinprovider.service";
+import { LoadingController } from '@ionic/angular';
 
 let parse = require("parse");
 
@@ -26,6 +27,7 @@ export class AccountPage implements OnInit {
   addrObj: any;
 
   constructor(
+    public loadingController: LoadingController,
     public navigate: NavController,
     public nativePageTransitions: NativePageTransitions,
     public alert:AlertController,
@@ -95,9 +97,26 @@ export class AccountPage implements OnInit {
 
       Parse.User.current().save().then(user => {
         console.log('user updated');
+          this.presentLoading();
+        
       }, error => {
         console.log(error);
       });
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Guardando...',
+      duration: 4000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+ 
+    this.navigate.navigateRoot('/profile');
+
   }
   // saveChanges()
   // {

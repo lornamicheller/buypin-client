@@ -16,7 +16,10 @@
     </div>
 
     <div  class="scroll-tags">
+        <ion-button (click)="filter('All')" style="--box-shadow: none;" class="tags">Todos</ion-button>
+        <!-- <p *ngIf="categoryArray == null" style="text-align: center !important;"> No hay productos disponibles.</p> -->
       <div *ngFor="let cat of categoryArray">
+        
       <ion-button (click)="filter(cat)" style="--box-shadow: none;" class="tags">{{cat}}</ion-button>
       <!-- <ion-button (click)="filter('Alcochol')"  style="--box-shadow: none;" class="tags">Alcohol</ion-button>
       <ion-button (click)="filter('Refrigerios')"  style="--box-shadow: none;" class="tags">Refrigerios</ion-button>
@@ -53,7 +56,9 @@
 
 <ion-content class="bg"> 
     <ion-grid>
+        <p *ngIf="product == null" style="text-align: center !important;"> No hay productos disponibles.</p>
       <ion-row>
+       
         <ion-col *ngFor="let item of product" size="6">
           <ion-card class="item-card">
             <h5 class="item-name">{{item.get('Name')}}</h5>
@@ -64,7 +69,7 @@
             <ion-grid>
               <ion-row>
                 <ion-col size="6">
-                  <ion-button (click)="object(item)" style="--box-shadow: none;"  class="add-btn" expand="block">ADD</ion-button>
+                  <ion-button (click)="object(item)" style="--box-shadow: none;"  class="add-btn" expand="block">Añadir</ion-button>
                 </ion-col>
                 <ion-col style="border-left: 1px solid rgb(189, 189, 189);" size="6">
                   <p class="prices">${{item.get('Price')}}</p>
@@ -98,7 +103,7 @@
 
     <ion-tab-button (click)="openOthers()">
       <img src="assets/other.png" width="30px" height="30px">
-      <!-- <ion-label>Tab Three</ion-label> -->
-    </ion-tab-button>
+ 
+    </ion-tab-button> 
 
   </ion-tab-bar>

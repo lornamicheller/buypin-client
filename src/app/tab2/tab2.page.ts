@@ -5,7 +5,7 @@ import { Parse } from 'parse';
 import { AlertController } from "@ionic/angular";
 import * as moment_ from 'moment';
 import { BuypinproviderService } from "../buypinprovider.service";
-
+import { LoadingController } from '@ionic/angular';
 
 let parse = require("parse");
 const moment = moment_;
@@ -27,55 +27,109 @@ export class Tab2Page {
   storePhone: any;
   statusText :any;
 
+
+
+  scheduleArray:any;
+
+ schedule2:any;
+
   constructor(
+    public loadingController: LoadingController,
+    public alert: AlertController,
     public navigate: NavController,
     public nativePageTransitions: NativePageTransitions,
-    public provider: BuypinproviderService,
-    public alertCtrl:AlertController
+    public provider: BuypinproviderService
   ) {
     Parse.initialize("C0XMchZu6Y9XWNUK4lM1UHnnuXhC3dcdpa5fGYpO", "EdN4Xnln11to6pfyNaQ5HD05laenoYu04txYAcfo");
     Parse.serverURL = 'https://parseapi.back4app.com/';
   }
 
   ngOnInit() {
+
+    console.log(this.provider.categoryId);
+    this.presentLoading();
+    
+    this.scheduleArray = [];
     console.log(Parse.User.current().id);
     this.getStores();
+    // this.getSchedule("EHKmWFAydO");
+
+   
+    
     this.categoryName = this.provider.categoryId.get('name');
 
     this.time();
     this.currentDate();
+    
+    console.log("date:", new Date());
+    
+    
+   
+   
+   
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Buscando...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+    // let e;
+    // this.presentPopover(e);
+  }
+
+
   openPage(object) {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
     this.provider.storeId = object;
     console.log(this.provider.storeId);
-    this.nativePageTransitions.fade(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab3");
   }
 
   transitionBack() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot('tabs/tabs/tab1');
   }
 
   cartOpen() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/tab5");
+  }
+
+  getSchedule(id)
+  {
+    var data;
+
+    console.log(id);
+    Parse.Cloud.run('getSchedule', {
+      storeId: id
+    }).then((result) => {
+       this.scheduleArray.push(result);
+    //  console.log("Schedule",result);
+    }, (error) => {
+      console.log(error);
+    });
+
   }
 
   currentDate() {
@@ -94,15 +148,46 @@ export class Tab2Page {
 
     var n = weekday[d.getDay()];
     this.weekDay = n;
+    console.log(this.weekDay);
     // console.log(n);
     let hour = moment(day, 'DD/MM/YYYY HH:mm').format('h:mm A');
     this.hourDay = hour;
     // console.log(hour);
   }
 
+  setDay(data)
+  {
+    var date= new Date();
+    console.log(this.scheduleArray.length);
+    Parse.Cloud.run('verifySchedule', {
+      storeId:data,
+      currentDay:this.weekDay,
+      currentHour: date
+    }).then((result) => {
+      console.log("SETTTTT: ",result);
+        // return result;
+        console.log(result);
+        if(result == true)
+        {
+          document.getElementById('cerrado').style.display = "none";
+          document.getElementById('abierto').style.display ="show";
+        
+        }
+        else if (result == false)
+        {
+          document.getElementById('abierto').style.display = "none";
+          document.getElementById('cerrado').style.display = "show";
+        }
+      
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
+
   getStores() {
     Parse.Cloud.run('getStores', {
-      categoryId: this.provider.categoryId.id
+      categoryId: this.provider.categoryId.id,
     }).then((result) => {
       console.log(result);
       if(result == null || result == '')
@@ -110,54 +195,36 @@ export class Tab2Page {
         this.statusText = true;
       }
       this.stores = result;
+      console.log(this.stores[0].data.get("Name"));
+      // console.log("lenght", this.stores.length);
+
+      // this.iterationSchedule(this.stores);
+
+
+       
+      
     }, (error) => {
       console.log(error);
     });
   }
 
-  getDayWork(schedule) {
-    // console.log(schedule);
-    for (let i = 0; i < schedule.length; i++) {
-      if (this.weekDay == schedule[i].day) {
-        // console.log("Es el mismo ", schedule[i].day);
+  iterationSchedule(iter)
+  {
+    console.log(iter);
 
-        //start Hour
-        let hourstart = moment(schedule[i].start, 'h:mm A').format('YYYY-MM-DD h:mm A');
-        let start = Date.parse(hourstart);
-        let startDate = new Date(start);
-        // console.log(startDate);
-        // console.log("START", start);
+    for(let i =0; i < iter.length; i ++)
+    {
+      console.log("Iteration", i);
+    // this.getSchedule(iter[i].id);
+    this.setDay(iter.id);
 
-        //end hour
-        let hourend = moment(schedule[i].end, 'h:mm A').format('YYYY-MM-DD h:mm A');
-        // console.log(hourend);
-        let end = Date.parse(hourend);
-        let endDate = new Date(end);
-        // console.log(endDate);
-        // console.log("END", end);
-
-        // // current hour 
-        // console.log("current hour", this.hourDay);
-        let currentHour = moment(this.hourDay, 'h:mm A').format('YYYY-MM-DD h:mm A');
-        // console.log(currentHour);
-        let curr = Date.parse(currentHour);
-        let current = new Date(curr);
-        this.errorAlert(curr);
-        
-        // console.log(current);
-        // console.log("CURR", curr);
-
-        //condition
-        if (curr > start && curr < end) {
-          // console.log("Estas en el range", schedule[i].start + " - " + schedule[i].end);
-          return true;
-        }
-        else {
-          return false;
-        }
-      }
     }
+    // console.log(this.scheduleArray);
+    // console.log(this.scheduleArray.length);
+    // this.setDay();
   }
+
+  
 
   startHour(start) {
     // console.log(start);
@@ -180,33 +247,38 @@ export class Tab2Page {
   }
 
   openHome() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    this.navigate.navigateRoot("/tab1");
+  }
+
+  goBack()
+  {
     this.navigate.navigateRoot("/tab1");
   }
 
   openProfile() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/profile");
   }
 
   openOthers() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
-    this.navigate.navigateRoot("");
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    this.navigate.navigateRoot("/service-area");
   }
 
   time() {
@@ -220,26 +292,27 @@ export class Tab2Page {
     // this.openClose();
   }
 
-  async errorAlert(error : any){
-    const alert =  await this.alertCtrl.create({
-      header: 'Error',
-      message: error,
-      buttons: [{
-        text: 'OK',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-        }
-      }]
-    });
-    await alert.present();
-  }
-
   formatPhone(phone) {
     var digits = ("" + phone).split("");
     let juice = digits.slice(0, 3).join("") + "-" + digits.slice(3, 6).join("") + "-" + digits.slice(6).join("");
-
+     
     return juice;
   }
+
+  // async errorAlert(error : any){
+  //   const alert =  await this.alert.create({
+  //     header: 'Error',
+  //     message: error,
+  //     buttons: [{
+  //       text: 'OK',
+  //       role: 'cancel',
+  //       cssClass: 'secondary',
+  //       handler: () => {
+  //         console.log('Confirm Cancel');
+  //       }
+  //     }]
+  //   });
+  //   await alert.present();
+  // }
+
 }

@@ -29,12 +29,12 @@ export class SearchPage implements OnInit {
   }
 
   buttonClick() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab3");
   }
 

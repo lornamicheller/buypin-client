@@ -96,6 +96,7 @@ export class RegisterPage implements OnInit {
 
     this.camera.getPicture(options).then((imageData) => {
       self.picture = 'data:image/jpeg;base64,' + imageData;
+    //  this.alertl(JSON.stringify(imageData));
       //self.changeInformation.set('', self.picture);
       const base64Image = self.picture;
       const name = 'photo.jpeg';
@@ -157,7 +158,7 @@ export class RegisterPage implements OnInit {
 
     if (this.password !== this.confirmPass) {
       this.notEqual();
-    } else if (this.fullName === null || this.email === null || this.password === null) {
+    } else if (this.firstName == null || this.firstName == '' || this.lastName == null || this.lastName == '' || this.email == null || this.email == '' || this.password == null || this.password =='' || this.confirmPass== null || this.confirmPass == '' || this.savedPhoto == null) {
       this.empty();
     } else {
       user.set('firstName', this.firstName);
@@ -165,7 +166,7 @@ export class RegisterPage implements OnInit {
       user.set('email', this.email);
       user.set('password', this.password);
       user.set('username', this.email);
-      user.set('role', this.role);
+      user.set('role', "C");
       user.set('profilePic', this.savedPhoto);
       user.set('fullName', this.firstName + ' ' + this.lastName);
       user.signUp().then((user) => {
@@ -211,13 +212,29 @@ export class RegisterPage implements OnInit {
     await alert.present();
   }
 
+  async alertl(err) {
+    const alert = await this.alert.create({
+      header: '¡ALERTA!',
+      message: err,
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: () => {
+          console.log('Confirm Cancel');
+        }
+      }]
+    });
+    await alert.present();
+  }
+
   async presentAlertConfirm() {
     const alert = await this.alert.create({
-      header: 'Profile Picture',
+      header: 'Foto de Perfil',
       subHeader: '',
       buttons: [
         {
-          text: 'Camera',
+          text: 'Cámara',
           role: 'camera',
           cssClass: 'secondary',
           handler: (blah) => {
@@ -225,7 +242,7 @@ export class RegisterPage implements OnInit {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Gallery',
+          text: 'Galería',
           handler: () => {
             this.openLibrary();
             console.log('Confirm Okay');

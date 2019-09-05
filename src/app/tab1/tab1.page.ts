@@ -30,23 +30,23 @@ export class Tab1Page {
 
   openPage(object) {
     let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
+      // duration: 300,
+      // iosdelay: 300
     }
     console.log(options);
     this.provider.categoryId = object;
     console.log(this.provider.categoryId);
-    this.nativePageTransitions.fade(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab2");
   }
 
   cartOpen() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/tab5");
   }
 
@@ -62,32 +62,32 @@ export class Tab1Page {
   }
 
   openHome() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tab1");
   }
 
   openProfile() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
     this.navigate.navigateRoot("/tabs/tabs/profile");
   }
 
   openOthers() {
-    let options: NativeTransitionOptions = {
-      duration: 300,
-      iosdelay: 300
-    }
-    console.log(options);
-    this.nativePageTransitions.fade(options);
-    this.navigate.navigateRoot("");
+    // let options: NativeTransitionOptions = {
+    //   duration: 300,
+    //   iosdelay: 300
+    // }
+    // console.log(options);
+    // this.nativePageTransitions.fade(options);
+    this.navigate.navigateRoot("/service-area");
   }
 }
