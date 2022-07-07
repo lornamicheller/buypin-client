@@ -40,7 +40,7 @@
     "cordova-plugin-stripe": "1.5.3",
     "core-js": "^2.5.4",
     "mapbox-gl": "^1.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "parse": "^2.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
